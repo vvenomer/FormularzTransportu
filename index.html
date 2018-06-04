@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="form.css" rel="stylesheet" type="text/css">
+	<script src="form.js"></script>
+	<script src="class.js"></script>
+	<title>Formularz</title>
+	<meta charset="utf-8" />
+</head>
+
+<body>
+	<div id="container">
+		<form id="form" action="send.php" method="post">
+			<h1>Transport</h1>
+			Transport z
+			<span class="required">*</span>
+			<br>
+			<input name="transport_from" placeholder="Gdańsk" required>
+			<br> Transport do
+			<span class="required">*</span>
+			<br>
+			<input name="transport_to" placeholder="Warszawa" required>
+			<br> Typ samolotu
+			<span class="required">*</span>
+			<br>
+			<select name="transport_airplane">
+				<option value="airbus">Airbus A380</option>
+				<option value="boeing">Boeing 747</option>
+			</select>
+			<div id="doc">
+				Dokumenty (kilknij przycisk lub przeciągnij pliki typu: .jpg, .png, .doc, .docx lub .pdf)
+				<br>
+				<input type="file" name="transport_docs" multiple >
+				<div class="err_msg">Wybrany plik ma zły typ. Wspierane typy to:
+					<span class="err_msg_txt">.jpg, .png, .doc, .docx i .pdf</span>
+				</div>
+			</div>
+			<div id="date">
+				Data transportu 
+				<span class="required">*</span> (dni robocze)
+				<br>
+				<input type="date" name="transport_date" required>
+				<div class="err_msg">Wybrany dzień to nie jest dzień roboczy (Dni
+					<span class="err_msg_txt">od poniedziałku do piątku</span>)</div>
+			</div>
+			<h2>Ładunki</h2>
+			<div id="loads">
+				<div class="load">
+					<h4>Ładunek <span class="load_nr">1</span>:</h4>
+					Nazwa
+					<span class="required">*</span>
+					<br>
+					<input name="load_name1" required>
+					<div class="mass">
+						Ciężar [kg] (maksymalnie 35t dla Airbusa i 38t dla Boeinga)
+						<span class="required">*</span>
+						<br>
+						<input name="load_weight1" type="number" min="1" required>
+						<div class="err_msg">Maksymalny ciężar pojedyńczego ładunku dla wybranego samolotu, to
+							<span class="err_msg_txt"></span>
+						</div>
+					</div>
+					Typ ładuknu
+					<span class="required">*</span>
+					<br>
+					<input type="radio" name="load_type1" value="normal" id="normal1" required>
+					<label for="normal1">ładunek zwykły</label>
+					<br>
+					<input type="radio" name="load_type1" value="danger" id="danger1" required>
+					<label for="danger1">ładunek niebezpieczny</label>
+				</div>
+			</div>
+			<input type="button" value="Dodaj kolejny ładunek" id="add_load">
+			<br>
+			<input type="submit" value="Wyślij" id="send"></input>
+			<br>
+			<span class="required">[*] - pole wymagame</span>
+		</form>
+	</div>
+</body>
+
+</html>
